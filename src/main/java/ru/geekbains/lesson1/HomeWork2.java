@@ -85,7 +85,7 @@ public class HomeWork2 {
             ints[i] = Integer.parseInt(reader.readLine());
         }
         Arrays.sort(ints);
-/*        интернетом не пользовался (я так понимаю, что ожидаемое решение - ввести 2 переменные min = Integer.MIN_VALUEM. и max = Integer.MAX_VALUEM, и сравнивать,
+/*        интернетом не пользовался (я так понимаю, что ожидаемое решение - ввести 2 переменные min = Integer.MAX_VALUEM. и max = Integer.MIN_VALUEM, и сравнивать,
          в цикле, со всеми значениями массива, и перезаписывать по условию)*/
         System.out.println("min: " + ints[0]);
         System.out.println("max: " + ints[ints.length-1]);
@@ -112,28 +112,33 @@ public class HomeWork2 {
     }
 
     private static int[] task7() {
-        /*Не понял чем заполнять смещенные позиции, буду это делать 0, а те значения, котрые вышли за предел размерности массива - удалять*/
-        return shiftArray(new int[]{1,2,3,4,5,6,7,8,9,10}, 0);
+        return shiftArray(new int[]{1,2,3,4,5,6,7,8,9,10}, 3);
     }
 
     private static int[] shiftArray(int[] ints, int shiftTo) {
-        if (shiftTo < 0) {
-            for (int i = 0; i < ints.length; i++) {
-                if ((i + shiftTo) >= 0 && (i + shiftTo) < ints.length) {
-                    ints[i + shiftTo] = ints[i];
-                    ints[i] = 0;
+        for (int i = 0; i < Math.abs(shiftTo); i++) {
+        if (shiftTo > 0 && ints.length > 1) {
+                int temp = ints[0];
+                for (int j = ints.length-1; j > 0; j--) {
+                    if (j+1 != ints.length) {
+                        ints[j + 1] = ints[j];
+                    } else {
+                        ints[0] = ints[j];
+                    }
                 }
+                ints[1] = temp;
             }
-            return ints;
-        }
-        if (shiftTo > 0) {
-            for (int i = ints.length-1; i >= 0; i--) {
-                if ((i + shiftTo) >= 0 && (i + shiftTo) < ints.length) {
-                    ints[i + shiftTo] = ints[i];
-                    ints[i] = 0;
+            if (shiftTo < 0 && ints.length > 1) {
+                int temp = ints[ints.length-1];
+                for (int j = 0; j < ints.length; j++) {
+                    if (j != 0) {
+                        ints[j - 1] = ints[j];
+                    } else {
+                        ints[ints.length-1] = ints[j];
+                    }
                 }
+                ints[ints.length-2] = temp;
             }
-            return ints;
         }
         return ints;
     }
