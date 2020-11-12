@@ -1,4 +1,4 @@
-package ru.geekbains.lesson1;
+package ru.geekbrains.lesson1;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -117,6 +117,7 @@ public class TicTacToe extends JFrame {
                 break;
             }
         }
+
         //проверка верикальной линии
         //Аналогично с горизонтальной, рассчтитывем Y нулевое и Y максимальное
         int yMin = valueOfY - (DOTS_TO_WIN - 1) > 0 ? valueOfY - (DOTS_TO_WIN - 1) : 0; //top size

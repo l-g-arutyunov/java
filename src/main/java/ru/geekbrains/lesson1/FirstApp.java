@@ -1,4 +1,4 @@
-package ru.geekbains.lesson1;
+package ru.geekbrains.lesson1;
 
 public class FirstApp {
 //    Все примитивные типы
